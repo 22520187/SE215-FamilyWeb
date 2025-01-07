@@ -1,11 +1,11 @@
 import React from "react";
 import { ConfigProvider, Layout, Menu } from "antd";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import Calendar from "./pages/Calendar";
+import CalendarPage from "./pages/CalendarPage";
 import Message from "./pages/Message";
 import Task from "./pages/Task";
 import Dashboard from "./pages/Dashboard";
-
+import "../src/assets/themes/material-lite.min.css"
 const { Header, Content, Footer } = Layout;
 
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
       <Content style={{ padding: "20px", background: "#fff", minHeight: "80vh" }}>
         <Routes>
           <Route path="/" element={<Dashboard />} /> {/* Đặt trang Dashboard là mặc định */}
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/message" element={<Message />} />
           <Route path="/task" element={<Task />} />
