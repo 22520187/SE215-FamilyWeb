@@ -1,0 +1,10 @@
+.list-task-page-content { 
+    display: flex; 
+    flex-direction: row; 
+    gap:50px; 
+    
+   
+} 
+.task-page-root {
+    align-items: center;
+}
