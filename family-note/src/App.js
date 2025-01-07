@@ -5,6 +5,7 @@ import CalendarPage from "./pages/CalendarPage";
 import Message from "./pages/Message";
 import Task from "./pages/Task";
 import Dashboard from "./pages/Dashboard";
+import ProfilePage from "./pages/ProfilePage";
 import "../src/assets/themes/material-lite.min.css"
 const { Header, Content, Footer } = Layout;
 
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/message" element={<Message />} />
           <Route path="/task" element={<Task />} />
+          <Route path="/profile-page" element={<ProfilePage/>}/>
         </Routes>
       </Content>
 
