@@ -7,13 +7,14 @@
     flex-direction: column;
     align-items: center; 
     margin-top: 30px;
+    padding-bottom: 10px;
 } 
 .list_scroll_task::-webkit-scrollbar{
     display: none;
 }
 .add_new_task_button {
     width:27vw;
-    background-color: blue; 
+    background-color: #5B7FFE;
     color: white;  
     font-weight: 1000;  
     padding-top: 5px; 

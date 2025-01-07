@@ -10,7 +10,7 @@ function ListTask({exampleTask, isEnable, onEdit, isAdmin})
         <div>
             <FloatingButton buttonText={exampleTask.buttonText} numberTask={exampleTask.numberTask}></FloatingButton>   
              
-            <AddNewTaskButton param={exampleTask.buttonText}></AddNewTaskButton>  
+            <AddNewTaskButton param={exampleTask.buttonText} isAdmin={isAdmin}></AddNewTaskButton>  
              <div className="list_scroll_task">
                 {exampleTask.listTasks.map((item)=>{
                     return (

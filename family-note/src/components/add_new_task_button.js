@@ -1,10 +1,13 @@
 import React from "react";   
-function AddNewTaskButton({param}) 
+function AddNewTaskButton({param, isAdmin}) 
 { 
     function onAddNewTask() 
     {
         document.getElementById("popup").style.display="flex";
         
+    } 
+    if(isAdmin==false) {
+        return <div></div>
     }
     if(param=="To Do") 
     { 
@@ -16,7 +19,7 @@ function AddNewTaskButton({param})
         }}   
         >Add new task</button>
     } 
-    else {
+    else  {
         return <div></div>
     }
 } 
