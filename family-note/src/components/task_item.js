@@ -24,7 +24,12 @@ function TaskItem({task, isEnable, onEdit, isAdmin})
                     </div>
                     
                 </div> 
-                <button style={{display:!isAdmin&&isEnable?"":"none"}} className="mark-as-done">Mark as done</button>
+                <button onClick={
+                    (e)=>{
+                        e.preventDefault();
+                        alert("Well done");
+                    }
+                } style={{display:!isAdmin&&isEnable?"":"none"}} className="mark-as-done">Mark as done</button>
                 
         </div>
     )
