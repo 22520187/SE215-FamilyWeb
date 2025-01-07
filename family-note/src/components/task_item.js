@@ -1,10 +1,16 @@
 import React from "react";   
 import "../styles/components/TaskItem.css";
-function TaskItem({task}) 
-{
+
+function TaskItem({task, isEnable, onEdit, isAdmin}) 
+{ 
+    
     return (
-        <div className="task_container">
-            <div class="task-title">{task.name}</div>
+        <div className="task_container"> 
+        <div className="header-item">
+            <div class="task-title">{task.name}</div> 
+            <img onClick={onEdit} id="edit-button" className="edit-button" src="pencil.png" style={{display:isEnable&&isAdmin? "" : "none"}}/>
+        </div>
+            
              <div class="task-desc">{task.detail}</div> 
              <div class="line"></div>
              <div class="task-details"> <div class="assigned"> 
@@ -13,9 +19,12 @@ function TaskItem({task})
                 <div>
                     <div className="end-date-text">End date</div>
                 <div class="end-date">{task.time}
-                    </div> 
+                    </div>   
+                     
                     </div>
-                </div>
+                    
+                </div> 
+                <button style={{display:!isAdmin&&isEnable?"":"none"}} className="mark-as-done">Mark as done</button>
                 
         </div>
     )

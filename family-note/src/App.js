@@ -47,7 +47,8 @@ const App = () => {
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/message" element={<Message />} />
-          <Route path="/task" element={<Task />} />
+          <Route path="/task" element={<Task isAdmin={true}/>}/>  
+          <Route path="/task_member" element={<Task isAdmin={false}/>} />
         </Routes>
       </Content>
 
