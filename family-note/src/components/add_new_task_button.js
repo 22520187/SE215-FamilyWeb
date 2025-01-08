@@ -18,12 +18,12 @@ function AddNewTaskButton({param, isAdmin})
     if(param=="To Do") 
     { 
         
-        return <button className="add_new_task_button"  
+        return <Button className="add_new_task_button"  
         onClick={(e)=>{
             e.preventDefault();
             onAddNewTask();
         }}   
-        >Add new task</button>
+        >Add new task</Button>
     } 
     else  {
         return <div></div>

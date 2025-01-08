@@ -49,7 +49,7 @@ const Task = ({isAdmin}) => {
   }
   const exampleTaskTodo ={
     buttonText:"To Do",
-    numberTask:3,
+    numberTask:5,
     listTasks:[
         {
             name:"Buy fruit",
@@ -65,7 +65,17 @@ const Task = ({isAdmin}) => {
             name:"Buy fruit",
             detail:"Buy orange, strong berry, bannana",
             time:"25 May-16:00"
-        }
+        }, 
+        {
+          name:"Buy fruit",
+          detail:"Buy orange, strong berry, bannana",
+          time:"25 May-16:00"
+      }, 
+      {
+        name:"Buy fruit",
+        detail:"Buy orange, strong berry, bannana",
+        time:"25 May-16:00"
+    }
     ]
 };
 
