@@ -1,27 +1,61 @@
-import React, { useState } from 'react';
-import { Input, Avatar, Button } from 'antd';
+import React, { useState, useRef } from 'react';
+import { Input, Avatar,Modal, Button } from 'antd';
 import { PlusOutlined, SmileOutlined, StarOutlined, SearchOutlined, MoreOutlined } from '@ant-design/icons';
 import EmojiPicker from 'emoji-picker-react';
 
 const ChatWindow = ({ selectedUser, messages, onSend }) => {
   const [inputValue, setInputValue] = useState('');
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false); 
+  const [searchValue, setSearchValue] = useState(""); 
+
+
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
+
 
   const handleSend = () => {
     if (inputValue.trim()) {
       const newMessage = {
         text: inputValue,
         isMe: true,
-        timestamp: new Date().toLocaleTimeString(), 
+        timestamp: new Date().toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true, 
+        }),
       };
       onSend(newMessage);
-      setInputValue(''); 
+      setInputValue('');
     }
   };
+  
 
   const handleEmojiClick = (emojiObject) => {
     setInputValue((prev) => prev + emojiObject.emoji); 
   };
+
+
+  const fileInputRef = useRef(null);
+
+  
+  const handleAddFileClick = () => {
+    fileInputRef.current.click(); 
+  };
+
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+    if (files.length > 0) {
+      alert(`Selected files: ${Array.from(files).map((file) => file.name).join(', ')}`);
+    }
+  };
+
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -42,18 +76,28 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
 
         {/* Các nút bên phải */}
         <div style={{ display: 'flex', gap: '10px', marginLeft: 'auto', }}>
-          <Button
-            shape="circle"
-            icon={<StarOutlined style={{ color: '#1890ff' }} />}
-            style={{ backgroundColor: '#fff', border: '1px solid #ddd' }}
-            onClick={() => alert('Star Clicked!')}
-          />
+         
           <Button
             shape="circle"
             icon={<SearchOutlined style={{ color: '#000000' }} />}
             style={{ backgroundColor: '#fff', border: '1px solid #ddd' }}
-            onClick={() => alert('Search Clicked!')}
+            onClick={handleOpenModal}
           />
+          {/* Modal chứa ô tìm kiếm */}
+          <Modal
+            title="Search"
+            visible={isModalVisible}
+            onCancel={handleCloseModal} // Đóng modal
+            footer={null} // Không có nút ở footer
+          >
+            {/* Ô tìm kiếm */}
+            <Input
+              placeholder="Type something..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)} // Lưu giá trị input
+              style={{ width: "100%", marginTop: "10px" }}
+            />
+          </Modal>
           <Button
             shape="circle"
             icon={<MoreOutlined style={{ color: '#000000' }} />}
@@ -150,7 +194,16 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
         <div style={{ marginLeft: '10px', width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#1890ff',display: 'flex',  alignItems: 'center',justifyContent: 'center', cursor: 'pointer', }}>
           <PlusOutlined
             style={{ fontSize: '20px', color: '#fff'}}
-            onClick={() => alert('Add File Clicked!')}
+            onClick={handleAddFileClick}
+          />
+            {/* Input file (ẩn) */}
+          <input
+            ref={fileInputRef}
+            type="file"
+            style={{ display: 'none' }}
+            onChange={handleFileChange} // Xử lý file sau khi người dùng chọn
+            multiple // Cho phép tải lên nhiều file
+            webkitdirectory="" // Thêm thuộc tính này để hỗ trợ chọn thư mục (nếu cần)
           />
         </div>
       </div>

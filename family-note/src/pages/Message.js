@@ -8,16 +8,16 @@ const { Sider, Content } = Layout;
 const App = () => {
   const [users, setUsers] = useState([
     {
-      name: 'Jennifer Markus',
+      name: 'Alice',
       message: 'Hey! Did you finish the Hi-Fi wireframes for flora app design?',
-      time: 'Today 05:30 PM',
-      avatar: 'https://i.pravatar.cc/300',
+      time: 'Today | 05:30 PM',
+      avatar: 'profile1.png',
     },
     {
-      name: 'Mary Freund',
+      name: 'Bob',
       message: 'Hey! Did you finish the Hi-Fi wireframes for flora app design?',
-      time: 'Today 05:30 PM',
-      avatar: 'https://i.pravatar.cc/301',
+      time: 'Today | 05:30 PM',
+      avatar: 'profile2.png',
     },
   ]);
 

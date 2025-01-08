@@ -1,10 +1,8 @@
 import React from "react";
-import { Layout, Avatar, Calendar, Progress, Card, List } from "antd";
-import {
-  BellOutlined,
-  DownOutlined,
-} from "@ant-design/icons";
+import { Layout, Avatar, Progress, Card, List } from "antd";
+import { BellOutlined, DownOutlined } from "@ant-design/icons";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { CalendarComponent } from "@syncfusion/ej2-react-calendars";
 import "../styles/pages/DashBoard.css"
 
 const { Header, Content, Sider } = Layout;
@@ -12,12 +10,12 @@ const { Header, Content, Sider } = Layout;
 const Dashboard = () => {
   // Data for the chart
   const data = [
-    { month: "Aug 2018", value: 100 },
-    { month: "Sep 2018", value: 300 },
-    { month: "Oct 2018", value: 200 },
-    { month: "Nov 2018", value: 400 },
-    { month: "Dec 2018", value: 350 },
-    { month: "Jan 2019", value: 500 },
+    { month: "Aug 2021", value: 100 },
+    { month: "Sep 2021", value: 300 },
+    { month: "Oct 2021", value: 200 },
+    { month: "Nov 2021", value: 400 },
+    { month: "Dec 2021", value: 350 },
+    { month: "Jan 2022", value: 500 },
   ];
 
   // Data for Backlog Tasks
@@ -58,48 +56,18 @@ const Dashboard = () => {
     },
   ];   
 
-  const dateCellRender = (current, info) => { 
-    const date = current.date(); 
-    console.log(date); 
-    const customStyle = [{ 
-      backgroundColor: '#1890ff', // Blue color
-      color: '#fff', borderRadius: '50%', 
-      display: 'inline-block', 
-      width: '100%', 
-      height: '100%', 
-      lineHeight: '24px', 
-      textAlign: 'center' 
-  },  
-  { 
-    backgroundColor: '#B2972B', // Blue color
-    color: '#fff', borderRadius: '50%', 
-    display: 'inline-block', 
-    width: '100%', 
-    height: '100%', 
-    lineHeight: '24px', 
-    textAlign: 'center' 
-},  
-{ 
-  backgroundColor: 'green', // Blue color
-  color: '#fff', borderRadius: '50%', 
-  display: 'inline-block', 
-  width: '100%', 
-  height: '100%', 
-  lineHeight: '24px', 
-  textAlign: 'center' 
-}];
-function getRandomNumber() { 
-  return Math.floor(Math.random() * 3) ;
-}
+  const customDayCell = (args) => {
+    const date = args.date.getDate();
 
- // Add the specific dates you want to style 
- const style = customStyle[getRandomNumber()];
-const highlightedDates = [9,17,16,25]; 
-if (highlightedDates.includes(date)) { 
-  console.log("A");
-  return <div className="ant-fullcalendar-selected-day" style={style}>{date}</div>; 
-} 
- };
+    // Điều kiện áp dụng màu cho các ngày cụ thể
+    if (date === 2) {
+      args.element.classList.add("highlight-yellow");
+    } else if (date === 16 || date === 17) {
+      args.element.classList.add("highlight-green");
+    } else if (date === 20) {
+      args.element.classList.add("highlight-purple");
+    }
+  };
 
   return (
     <Layout style={{ height: "100vh" }}>
@@ -131,7 +99,7 @@ if (highlightedDates.includes(date)) {
               <LineChart data={data}>
                 <XAxis dataKey="month" />
                 <Tooltip />
-                <Line type="monotone" dataKey="value" stroke="#8884d8" />
+                <Line type="monotone" dataKey="value" stroke="#241cc8" />
               </LineChart>
             </ResponsiveContainer>
           </Card>
@@ -144,9 +112,11 @@ if (highlightedDates.includes(date)) {
                   <h4>{task.title}</h4>
                   <Progress
                     percent={(task.progress / task.total) * 100}
+                    strokeColor="#6b65ec" 
                     size="small"
+                    trailColor="#f0f0f0" 
                   />
-                  <p style={{ margin: "10px 0 0" }}>+5 users</p>
+                  <p style={{ margin: "10px 0 0",  fontSize: "14px", color: "#555"  }}>+5 users</p>
                 </Card>
               ))}
             </div>
@@ -154,33 +124,35 @@ if (highlightedDates.includes(date)) {
 
           {/* Completion Rate */}
           <Card title="Completion Rate">
-            <List
-              dataSource={completionData}
-              renderItem={(item) => (
-                <List.Item  >
-                  <span>{item.name}</span>
-                  <Progress
-                    style={{
-                      marginLeft:"5px", 
-                      width:"90%"
-                    }}
-                    percent={item.completion}
-                    size="small"
-                    status="active"
-                  />
-                </List.Item>
-              )}
-            />
-          </Card>
+          <List
+            dataSource={completionData}
+            renderItem={(item) => (
+              <List.Item style={{ justifyContent: "space-between" }}>
+                <span style={{ fontSize: "14px", fontWeight: "bold" }}>{item.name}</span>
+                <Progress
+                  percent={item.completion}
+                  size="small"
+                  strokeColor={
+                    item.completion >= 75
+                      ? "#52c41a"
+                      : item.completion >= 50
+                      ? "#faad14"
+                      : "#f5222d"
+                  } // Màu thay đổi dựa trên giá trị
+                  trailColor="#f0f0f0"
+                />
+              </List.Item>
+            )}
+          />
+        </Card>
         </Content>
 
         {/* Sidebar */}
         <Sider width={400} style={{ background: "#fff", padding: "20px" }}>
           {/* Calendar */}
           <Card title="Calendar" style={{ marginBottom: 20 }}>
-            <Calendar fullscreen={false} cellRender={ 
-              dateCellRender
-            } />
+            <CalendarComponent renderDayCell={customDayCell}
+             className="custom-calendar" />
           </Card>
 
           {/* Incoming Events */}
