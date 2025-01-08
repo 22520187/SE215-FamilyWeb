@@ -58,7 +58,7 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '80vh' }}>
       <div
         style={{
           display: 'flex',
@@ -87,14 +87,14 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
           <Modal
             title="Search"
             visible={isModalVisible}
-            onCancel={handleCloseModal} // Đóng modal
-            footer={null} // Không có nút ở footer
+            onCancel={handleCloseModal} 
+            footer={null} 
           >
             {/* Ô tìm kiếm */}
             <Input
               placeholder="Type something..."
               value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)} // Lưu giá trị input
+              onChange={(e) => setSearchValue(e.target.value)} 
               style={{ width: "100%", marginTop: "10px" }}
             />
           </Modal>
@@ -157,7 +157,10 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
           padding: '10px',
           borderTop: '1px solid #ddd',
           background: '#fff',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          position: 'sticky', 
+          bottom: 0, 
+          zIndex: 100, 
         }}
       >
 
