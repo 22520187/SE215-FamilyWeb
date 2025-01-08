@@ -44,6 +44,7 @@ const Task = ({isAdmin}) => {
     document.getElementById("taskName").defaultValue="Buy fruit";
     document.getElementById("description").defaultValue="Buy strongberry, banana";
     document.getElementById("endDate").defaultValue="2023-12-12";   
+    document.getElementById("endTime").defaultValue="16:00PM";
     document.getElementById("createTaskBtn").innerHTML="Update";
 
   }
@@ -130,7 +131,8 @@ const exampleTaskMissing = {
               document.getElementById("h2_header").innerHTML="Create New Task";
               document.getElementById("taskName").defaultValue="";
               document.getElementById("description").defaultValue="";
-              document.getElementById("endDate").defaultValue="";   
+              document.getElementById("endDate").defaultValue="";    
+              document.getElementById("endTime").defaultValue="";
               document.getElementById("createTaskBtn").innerHTML="Create";
               document.getElementById("popup").style.display="none";
             }
@@ -171,7 +173,9 @@ const exampleTaskMissing = {
              <label for="description">Description:</label> 
              <textarea id="description" name="description" placeholder="Enter task description" required/> 
              <label for="endDate">End Date:</label> 
-             <input  type="date" id="endDate" name="endDate" required/> 
+             <input  type="date" id="endDate" name="endDate" required/>   
+             <label for="endTime">End Time:</label> 
+             <input  type="time" id="endTime" name="endTime" required/> 
              <button type="submit" id="createTaskBtn" className="submit-create-task">Create Task</button> 
              </form> 
           </div> 
