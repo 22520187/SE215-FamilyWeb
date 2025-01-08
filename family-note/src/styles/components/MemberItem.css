@@ -1,0 +1,28 @@
+.member_item_avt {
+    width:20px;
+    height: 20px;
+}
+.member_item_card {
+    display: flex;   
+    flex-direction: row; 
+    gap:8px;
+    border-radius: 10px;   
+    background-color: #EFEFEF; 
+    
+    padding-left: 2px; 
+    
+} 
+.member_item_name {
+    background-color: transparent;
+    color: black; 
+    width:70%;
+}
+.delete_item {
+    width:20px; 
+    height: 20px; 
+    text-align: center;
+
+}
+.delete_item:hover {
+    cursor: pointer;
+}

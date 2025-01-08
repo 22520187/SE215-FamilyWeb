@@ -1,0 +1,13 @@
+.member_card { 
+    display: flex; 
+    flex-direction: row;  
+    gap:5px;
+    align-items: center; 
+}   
+.member_card:hover {
+    cursor: pointer;
+}
+.member_card_image {
+    width:30px;
+    height:30px;
+}
