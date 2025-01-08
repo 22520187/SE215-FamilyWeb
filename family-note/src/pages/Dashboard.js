@@ -2,15 +2,15 @@ import React from "react";
 import { Layout, Avatar, Calendar, Progress, Card, List } from "antd";
 import {
   BellOutlined,
-  UserOutlined,
   DownOutlined,
 } from "@ant-design/icons";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import "../styles/pages/DashBoard.css"
 
 const { Header, Content, Sider } = Layout;
 
 const Dashboard = () => {
-  // Dữ liệu cho biểu đồ
+  // Data for the chart
   const data = [
     { month: "Aug 2018", value: 100 },
     { month: "Sep 2018", value: 300 },
@@ -20,7 +20,7 @@ const Dashboard = () => {
     { month: "Jan 2019", value: 500 },
   ];
 
-  // Dữ liệu cho Backlog Tasks
+  // Data for Backlog Tasks
   const tasks = [
     { title: "Buy fruit", progress: 8, total: 10, users: ["John", "Mary"] },
     { title: "Buy fruit", progress: 5, total: 10, users: ["Bob", "Linda"] },
@@ -28,13 +28,77 @@ const Dashboard = () => {
     { title: "Buy fruit", progress: 4, total: 10, users: ["Linda"] },
   ];
 
-  // Dữ liệu tỷ lệ hoàn thành
+  // Data for Completion Rate
   const completionData = [
     { name: "John", completion: 100 },
     { name: "Mary", completion: 76 },
     { name: "Bob", completion: 62 },
     { name: "Linda", completion: 49 },
   ];
+
+  // Data for Incoming Events
+  const events = [
+    {
+      title: "A virtual evening of smooth jazz",
+      date: "1st May",
+      time: "2:00 PM",
+      img: "jazz.jfif",
+    },
+    {
+      title: "Jo malone london’s mother’s day",
+      date: "1st May",
+      time: "2:00 PM",
+      img: "jazz.jfif",
+    },
+    {
+      title: "Women's leadership conference",
+      date: "1st May",
+      time: "2:00 PM",
+      img: "jazz.jfif",
+    },
+  ];   
+
+  const dateCellRender = (current, info) => { 
+    const date = current.date(); 
+    console.log(date); 
+    const customStyle = [{ 
+      backgroundColor: '#1890ff', // Blue color
+      color: '#fff', borderRadius: '50%', 
+      display: 'inline-block', 
+      width: '100%', 
+      height: '100%', 
+      lineHeight: '24px', 
+      textAlign: 'center' 
+  },  
+  { 
+    backgroundColor: 'yellow', // Blue color
+    color: '#fff', borderRadius: '50%', 
+    display: 'inline-block', 
+    width: '100%', 
+    height: '100%', 
+    lineHeight: '24px', 
+    textAlign: 'center' 
+},  
+{ 
+  backgroundColor: 'green', // Blue color
+  color: '#fff', borderRadius: '50%', 
+  display: 'inline-block', 
+  width: '100%', 
+  height: '100%', 
+  lineHeight: '24px', 
+  textAlign: 'center' 
+}];
+function getRandomNumber() { 
+  return Math.floor(Math.random() * 3) ;
+}
+ // Add the specific dates you want to style 
+ const style = customStyle[getRandomNumber()];
+const highlightedDates = [9]; 
+if (highlightedDates.includes(date)) { 
+  console.log("A");
+  return <div className="ant-fullcalendar-selected-day" style={style}>{date}</div>; 
+} 
+ };
 
   return (
     <Layout style={{ height: "100vh" }}>
@@ -58,8 +122,8 @@ const Dashboard = () => {
       </Header>
 
       <Layout>
-        {/* Nội dung chính */}
-        <Content style={{ padding: "20px", background: "#f9f9f9" }}>
+        {/* Main Content */}
+        <Content style={{ padding: "20px", background: "#f9f9f9", width:"50%" }}>
           {/* Statistic */}
           <Card title="Statistic" style={{ marginBottom: 20 }}>
             <ResponsiveContainer width="100%" height={200}>
@@ -92,9 +156,13 @@ const Dashboard = () => {
             <List
               dataSource={completionData}
               renderItem={(item) => (
-                <List.Item>
+                <List.Item  >
                   <span>{item.name}</span>
                   <Progress
+                    style={{
+                      marginLeft:"5px", 
+                      width:"90%"
+                    }}
                     percent={item.completion}
                     size="small"
                     status="active"
@@ -106,39 +174,28 @@ const Dashboard = () => {
         </Content>
 
         {/* Sidebar */}
-        <Sider width={300} style={{ background: "#fff", padding: "20px" }}>
+        <Sider width={400} style={{ background: "#fff", padding: "20px" }}>
           {/* Calendar */}
           <Card title="Calendar" style={{ marginBottom: 20 }}>
-            <Calendar fullscreen={false} />
+            <Calendar fullscreen={false} cellRender={ 
+              dateCellRender
+            } />
           </Card>
 
           {/* Incoming Events */}
           <Card title="Incoming Event">
             <List
-              dataSource={[
-                {
-                  title: "A virtual evening of smooth jazz",
-                  date: "1st May",
-                  time: "2:00 PM",
-                },
-                {
-                  title: "Jo malone london’s mother’s day",
-                  date: "1st May",
-                  time: "2:00 PM",
-                },
-                {
-                  title: "Women's leadership conference",
-                  date: "1st May",
-                  time: "2:00 PM",
-                },
-              ]}
+              dataSource={events}
               renderItem={(item) => (
                 <List.Item>
-                  <div>
+                  <div className="event_item">
+                    <img src={item.img} style={{ width: "45px", height: "68px" }} />
+                    <div>
                     <h4>{item.title}</h4>
                     <p>
                       {item.date} - {item.time}
-                    </p>
+                    </p> 
+                    </div>
                   </div>
                 </List.Item>
               )}
