@@ -71,7 +71,7 @@ const Dashboard = () => {
       textAlign: 'center' 
   },  
   { 
-    backgroundColor: 'yellow', // Blue color
+    backgroundColor: '#B2972B', // Blue color
     color: '#fff', borderRadius: '50%', 
     display: 'inline-block', 
     width: '100%', 
@@ -91,9 +91,10 @@ const Dashboard = () => {
 function getRandomNumber() { 
   return Math.floor(Math.random() * 3) ;
 }
+
  // Add the specific dates you want to style 
  const style = customStyle[getRandomNumber()];
-const highlightedDates = [9]; 
+const highlightedDates = [9,17,16,25]; 
 if (highlightedDates.includes(date)) { 
   console.log("A");
   return <div className="ant-fullcalendar-selected-day" style={style}>{date}</div>; 
