@@ -127,10 +127,17 @@ const Dashboard = () => {
           <List
             dataSource={completionData}
             renderItem={(item) => (
-              <List.Item style={{ justifyContent: "space-between" }}>
+              <List.Item style={{ justifyContent: "space-between" }}> 
+              
                 <span style={{ fontSize: "14px", fontWeight: "bold" }}>{item.name}</span>
                 <Progress
                   percent={item.completion}
+                  style={
+                    {
+                      width:"90%"
+                      
+                    }
+                  }
                   size="small"
                   strokeColor={
                     item.completion >= 75
