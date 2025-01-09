@@ -1,18 +1,24 @@
 import React from "react";   
 import "../styles/components/TaskItem.css";
 
-function TaskItem({task, isEnable, onEdit, isAdmin}) 
+function TaskItem({task, isEnable, onEdit, isAdmin, colorCode}) 
 { 
     
     return (
-        <div className="task_container"> 
+        <div className="task_container" style ={{
+            border:"1px solid "+colorCode
+        }}> 
         <div className="header-item">
             <div class="task-title">{task.name}</div> 
             <img onClick={onEdit} id="edit-button" className="edit-button" src="pencil.png" style={{display:isEnable&&isAdmin? "" : "none"}}/>
         </div>
             
              <div class="task-desc">{task.detail}</div> 
-             <div class="line"></div>
+             <div className="line" style = {
+                {
+                    backgroundColor:colorCode
+                }
+             }></div>
              <div class="task-details"> <div class="assigned"> 
                 <img src="profile1.png" alt="Profile 1/"/> 
                 <img src="profile2.png" alt="Profile 2"/> </div> 

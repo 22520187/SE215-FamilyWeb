@@ -202,9 +202,9 @@ const exampleTaskMissing = {
         </div>
       </div>
       <div className="list-task-page-content">
-      <ListTask exampleTask={exampleTaskTodo} isEnable={true} onEdit={onEdit} isAdmin={isAdmin} ></ListTask> 
-      <ListTask exampleTask={exampleTaskComplete} isEnable={false} onEdit={()=>{}  } isAdmin={isAdmin}></ListTask>  
-      <ListTask exampleTask={exampleTaskMissing} isEnable={false} onEdit={()=>{} } isAdmin={isAdmin} ></ListTask>
+      <ListTask exampleTask={exampleTaskTodo} isEnable={true} onEdit={onEdit} isAdmin={isAdmin} colorCode={"#5B77FE"} ></ListTask> 
+      <ListTask exampleTask={exampleTaskComplete} isEnable={false} onEdit={()=>{}  } isAdmin={isAdmin}  colorCode={"#36BD00"}></ListTask>  
+      <ListTask exampleTask={exampleTaskMissing} isEnable={false} onEdit={()=>{} } isAdmin={isAdmin}   colorCode={"#FE9394"}></ListTask>
       
       </div>
       </div>
