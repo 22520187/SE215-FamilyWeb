@@ -62,21 +62,21 @@ const Task = ({isAdmin}) => {
             detail:"Buy orange, strong berry, bannana",
             time:"25 May-16:00"
         }, 
-        {
-            name:"Buy fruit",
-            detail:"Buy orange, strong berry, bannana",
-            time:"25 May-16:00"
-        }, 
-        {
-          name:"Buy fruit",
-          detail:"Buy orange, strong berry, bannana",
-          time:"25 May-16:00"
-      }, 
-      {
-        name:"Buy fruit",
-        detail:"Buy orange, strong berry, bannana",
-        time:"25 May-16:00"
-    }
+    //     {
+    //         name:"Buy fruit",
+    //         detail:"Buy orange, strong berry, bannana",
+    //         time:"25 May-16:00"
+    //     }, 
+    //     {
+    //       name:"Buy fruit",
+    //       detail:"Buy orange, strong berry, bannana",
+    //       time:"25 May-16:00"
+    //   }, 
+    //   {
+    //     name:"Buy fruit",
+    //     detail:"Buy orange, strong berry, bannana",
+    //     time:"25 May-16:00"
+    // }
     ]
 };
 
@@ -106,11 +106,11 @@ const exampleTaskMissing = {
             detail:"Buy orange, strong berry, bannana",
             time:"25 May-16:00"
         }, 
-        {
-            name:"Buy fruit",
-            detail:"Buy orange, strong berry, bannana",
-            time:"25 May-16:00"
-        }
+        // {
+        //     name:"Buy fruit",
+        //     detail:"Buy orange, strong berry, bannana",
+        //     time:"25 May-16:00"
+        // }
     ]
 
 }
@@ -118,8 +118,6 @@ const exampleTaskMissing = {
 
   return (
     <div>
-      <h1>Task Page</h1>
-
       <div className="tas-page-root">
       <div id="popup" class="popup">
          <div class="popup-content"> 

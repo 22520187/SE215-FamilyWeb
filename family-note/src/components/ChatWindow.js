@@ -58,7 +58,7 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '80vh' }}>
       <div
         style={{
           display: 'flex',

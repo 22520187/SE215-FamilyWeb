@@ -41,7 +41,8 @@ const App = () => {
   );
 
   return (
-    <Layout style={{ height: '100vh' }}>
+    <Layout
+     style={{ height: '80vh' }}>
       {/* Sidebar */}
       <Sider width={300} style={{ background: '#fff', borderRight: '1px solid #ddd' }}>
         <MessageList

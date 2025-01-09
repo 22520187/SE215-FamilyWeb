@@ -16,7 +16,7 @@ const MessageList = ({ messages, selectedUser, onSelectUser, onSearch }) => {
 
 
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ height: '80vh', display: 'flex', flexDirection: 'column' }}>
          {/* Header nhỏ với "All Message" */}
          <div
         style={{
