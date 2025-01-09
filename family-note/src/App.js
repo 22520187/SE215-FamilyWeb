@@ -31,6 +31,7 @@ const App = () => {
         </div>
         <Menu
           theme="light"
+          style={{ backgroundColor: "#ffffff" }}
           mode="horizontal"
           defaultSelectedKeys={["1"]}
           onClick={({ key }) => navigate(key)}

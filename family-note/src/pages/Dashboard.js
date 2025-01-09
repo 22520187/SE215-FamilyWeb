@@ -1,6 +1,6 @@
 import React from "react";
-import { Layout, Avatar, Progress, Card, List } from "antd";
-import { BellOutlined, DownOutlined } from "@ant-design/icons";
+import { Layout, Avatar, Progress, Tag,Card, List } from "antd";
+import { BellOutlined, DownOutlined} from "@ant-design/icons";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { CalendarComponent } from "@syncfusion/ej2-react-calendars";
 import "../styles/pages/DashBoard.css"
@@ -41,18 +41,21 @@ const Dashboard = () => {
       date: "1st May",
       time: "2:00 PM",
       img: "jazz.jfif",
+      tag:"Family event"
     },
     {
       title: "Jo malone london’s mother’s day",
       date: "1st May",
       time: "2:00 PM",
       img: "jazz.jfif",
+      tag:"Personal event"
     },
     {
       title: "Women's leadership conference",
       date: "1st May",
       time: "2:00 PM",
       img: "jazz.jfif",
+      tag:"Personal event"
     },
   ];   
 
@@ -70,9 +73,9 @@ const Dashboard = () => {
   };
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "80vh" }}>
       {/* Header */}
-      <Header
+      {/* <Header
         style={{
           background: "#fff",
           padding: "0 20px",
@@ -88,13 +91,13 @@ const Dashboard = () => {
           <span>Ammi Watts</span>
           <DownOutlined />
         </div>
-      </Header>
+      </Header> */}
 
       <Layout>
         {/* Main Content */}
-        <Content style={{ padding: "20px", background: "#f9f9f9", width:"50%" }}>
+        <Content style={{ padding: "20px", background: "#ffffff", width:"50%" }}>
           {/* Statistic */}
-          <Card title="Statistic" style={{ marginBottom: 20 }}>
+          {/* <Card title="Statistic" style={{ marginBottom: 20 }}>
             <ResponsiveContainer width="100%" height={200}>
               <LineChart data={data}>
                 <XAxis dataKey="month" />
@@ -102,17 +105,19 @@ const Dashboard = () => {
                 <Line type="monotone" dataKey="value" stroke="#241cc8" />
               </LineChart>
             </ResponsiveContainer>
-          </Card>
+          </Card> */}
 
           {/* Backlog Tasks */}
-          <Card title="Backlog Tasks" style={{ marginBottom: 20 }}>
+          <Card 
+          title={<span style={{ color: "#3D64FD" }}>Backlog Tasks</span>}
+           style={{ marginBottom: 20, background:"#ffffff" }}>
             <div style={{ display: "flex", gap: "20px" }}>
               {tasks.map((task, index) => (
-                <Card key={index} style={{ flex: 1 }}>
+                <Card key={index} style={{ flex: 1 ,background:"#ffffff"}}>
                   <h4>{task.title}</h4>
                   <Progress
                     percent={(task.progress / task.total) * 100}
-                    strokeColor="#6b65ec" 
+                    strokeColor="#3D64FD" 
                     size="small"
                     trailColor="#f0f0f0" 
                   />
@@ -123,7 +128,9 @@ const Dashboard = () => {
           </Card>
 
           {/* Completion Rate */}
-          <Card title="Completion Rate">
+          <Card 
+          style={{  background:"#ffffff" }}
+          title={<span style={{ color: "#3D64FD" }}>Completion Rate</span>}>
           <List
             dataSource={completionData}
             renderItem={(item) => (
@@ -157,24 +164,28 @@ const Dashboard = () => {
         {/* Sidebar */}
         <Sider width={400} style={{ background: "#fff", padding: "20px" }}>
           {/* Calendar */}
-          <Card title="Calendar" style={{ marginBottom: 20 }}>
+          {/* <Card title="Calendar" style={{ marginBottom: 20 }}>
             <CalendarComponent renderDayCell={customDayCell}
              className="custom-calendar" />
-          </Card>
+          </Card> */}
 
           {/* Incoming Events */}
-          <Card title="Incoming Event">
+          <Card 
+          style={{  background:"#ffffff" }}
+          title={<span style={{ color: "#3D64FD" }}>Incoming Event</span>} >
             <List
               dataSource={events}
               renderItem={(item) => (
                 <List.Item>
                   <div className="event_item">
-                    <img src={item.img} style={{ width: "45px", height: "68px" }} />
                     <div>
                     <h4>{item.title}</h4>
-                    <p>
-                      {item.date} - {item.time}
-                    </p> 
+                      <p>
+                        {item.date} - {item.time}
+                      </p> 
+                    </div>
+                    <div style={{float:'left'}}>
+                      <Tag color="#3D64FD">{item.tag}</Tag>
                     </div>
                   </div>
                 </List.Item>

@@ -1,8 +1,8 @@
 .floating_button {
     display: flex;  
     width:100%;   
-    border:1px solid black;
-    border-radius: 10px;  
+    border:1px solid #3D64FD;
+    border-radius: 8px;  
     padding:10px;  
     align-items: center;
 }   
@@ -13,11 +13,23 @@
 } 
  .number_task {
     flex:1;
-    background-color: black;
+    background-color: #E5F1FF;
     border-radius: 1000px;  
     padding:10px;
-    color: white; 
+    color: #3D64FD; 
     font-style: bold; 
     font-weight: bolder;
     text-align: center;
+ }
+
+ .green{
+    color:#B6FA9C
+ }
+
+ .red{
+    color:#FE9394
+
+ }
+ .blue{
+    color:#3D64FD;
  }
