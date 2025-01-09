@@ -18,7 +18,7 @@ function AddNewTaskButton({param, isAdmin})
     if(param=="To Do") 
     { 
         
-        return <Button className="add_new_task_button"  
+        return <Button className=""  type="primary" style={{width:'100%'}}
         onClick={(e)=>{
             e.preventDefault();
             onAddNewTask();

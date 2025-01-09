@@ -19,9 +19,9 @@ const CalendarPage = () => {
   const [viewMode, setViewMode] = useState("personal"); // personal, family, member
   const [selectedMember, setSelectedMember] = useState(null); // Member ID
   const [events, setEvents] = useState([
-    { Id: 1, Subject: "Meeting", StartTime: new Date(2025, 0, 7, 10, 0), EndTime: new Date(2025, 0, 7, 11, 0), Member: "user1" },
-    { Id: 2, Subject: "Conference", StartTime: new Date(2025, 0, 8, 13, 0), EndTime: new Date(2025, 0, 8, 14, 0), Member: "user2" },
-    { Id: 3, Subject: "Family Dinner", StartTime: new Date(2025, 0, 10, 18, 0), EndTime: new Date(2025, 0, 10, 20, 0), Member: "family" }
+    { Id: 1, Subject: "Meeting", StartTime: new Date(2025, 0, 7, 9, 0), EndTime: new Date(2025, 0, 7, 10, 0), Member: "user1" },
+    // { Id: 2, Subject: "Conference", StartTime: new Date(2025, 0, 8, 13, 0), EndTime: new Date(2025, 0, 8, 14, 0), Member: "user2" },
+    // { Id: 3, Subject: "Family Dinner", StartTime: new Date(2025, 0, 10, 18, 0), EndTime: new Date(2025, 0, 10, 20, 0), Member: "family" }
   ]);
 
   const members = [
@@ -69,7 +69,7 @@ const CalendarPage = () => {
           selectedDate={new Date()}
           eventSettings={{ dataSource: events }}
           startHour="06:00"
-          endHour="22:00"
+          endHour="12:00"
           showTimeIndicator={true}
           views={['Day', 'Week']} 
         >
