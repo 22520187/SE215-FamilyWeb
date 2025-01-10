@@ -3,13 +3,36 @@ import { ScheduleComponent, Day, Week, Inject } from "@syncfusion/ej2-react-sche
 import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-buttons/styles/material.css";
 import "@syncfusion/ej2-schedule/styles/material.css";
-
+import TaskList from "../components/TaskList";
 const ProfilePage = () => {
   const user = {
     name: "John Doe",
     avatar: "https://danviet.mediacdn.vn/zoom/700_438/296231569849192448/2021/8/8/thien-an-14-16284301808641112842162-0-0-438-700-crop-1628430344637448733787.jpg", // Ảnh đại diện
     coverPhoto: "https://s3.cloud.cmctelecom.vn/tinhte2/2020/02/4901989_firefly_1.jpg", // Ảnh bìa
   };
+  const tasks = [
+    {
+      id: 1,
+      name: "Nhiệm vụ 1",
+      description: "Mô tả nhiệm vụ 1",
+      dueDate: "2025-01-15",
+      status: "1",
+    },
+    {
+      id: 2,
+      name: "Nhiệm vụ 2",
+      description: "Mô tả nhiệm vụ 2",
+      dueDate: "2025-01-05",
+      status: "1",
+    },
+    {
+      id: 3,
+      name: "Nhiệm vụ 3",
+      description: "Mô tả nhiệm vụ 3",
+      dueDate: "2025-01-12",
+      status: "0",
+    },
+  ];
 
   const events = [
     {
@@ -64,6 +87,9 @@ const ProfilePage = () => {
       <div style={{ padding: "70px 20px 20px", textAlign: "left" }}>
         <h2 style={{ margin: "0 0 10px" }}>{user.name}</h2>
       </div>
+      <div className="container mx-auto p-4">
+      <TaskList tasks={tasks} />
+    </div>
 
       {/* Schedule Component */}
       <div style={{ padding: "20px" }}>

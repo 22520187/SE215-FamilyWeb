@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { Input, Avatar,Modal, Button } from 'antd';
-import { PlusOutlined, SmileOutlined, StarOutlined, SearchOutlined, MoreOutlined } from '@ant-design/icons';
+import {ProfileOutlined , PlusOutlined, SmileOutlined, StarOutlined, SearchOutlined, MoreOutlined } from '@ant-design/icons';
 import EmojiPicker from 'emoji-picker-react';
-
+import { useNavigate } from 'react-router-dom';
 const ChatWindow = ({ selectedUser, messages, onSend }) => {
   const [inputValue, setInputValue] = useState('');
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false); 
   const [searchValue, setSearchValue] = useState(""); 
-
+  const navigate=useNavigate();
 
   const handleOpenModal = () => {
     setIsModalVisible(true);
@@ -100,9 +100,9 @@ const ChatWindow = ({ selectedUser, messages, onSend }) => {
           </Modal>
           <Button
             shape="circle"
-            icon={<MoreOutlined style={{ color: '#000000' }} />}
+            icon={<ProfileOutlined  style={{ color: '#000000' }} />}
             style={{ backgroundColor: '#fff', border: '1px solid #ddd' }}
-            onClick={() => alert('More Options Clicked!')}
+            onClick={() => navigate("/profile-page")}
           />
         </div>
       </div>
